@@ -1,0 +1,64 @@
+﻿<Window x:Class="PDWDropboxClient.UserInfoPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="UserInfoPage" Height="255" Width="958.488"
+        Background="{x:Null}"
+        AllowsTransparency="True" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Window.Resources>
+        <ControlTemplate x:Key="CloseButton" TargetType="Button">
+            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5,25,5,5">
+                <Border BorderBrush="White" BorderThickness="2" CornerRadius="5,25,5,5"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"
+                            TextBlock.Foreground="Black" TextBlock.FontSize="20" TextBlock.TextAlignment="Center"
+                            VerticalAlignment="Stretch" Padding="16,8,16,8" Background="Firebrick">
+                    <ContentPresenter RecognizesAccessKey="True" VerticalAlignment="Center"></ContentPresenter>
+                </Border>
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
+    <Border CornerRadius="30" BorderBrush="Black" HorizontalAlignment="Stretch" Background="#FFFDD0" 
+            BorderThickness="2">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="153*"></RowDefinition>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" Grid.RowSpan="2" >
+                <Image Name="Avatar" Source="Resources/logo.png">
+                    <Image.Clip>
+                        <GeometryGroup FillRule="Nonzero">
+                            <EllipseGeometry RadiusX="60" RadiusY="60" Center="60,60"></EllipseGeometry>
+                        </GeometryGroup>
+                    </Image.Clip>
+                </Image>
+                <Label Name="Username" Content="User Name" FontSize="16" Margin="10,0,0,20" />
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Vertical" Grid.RowSpan="2">
+                <Label Content="Email:" FontSize="16" />
+                <Label Content="Рефссылка:" FontSize="16" />
+                <Label Content="Язык:" FontSize="16" />
+                <Label Content="Страна:" FontSize="16" />
+                <Label Content="Места на диске:" FontSize="16" />
+            </StackPanel>
+            <StackPanel Grid.Column="2" Orientation="Vertical" Grid.RowSpan="2">
+                <Label Name="Email" Content="test@gmail.com" FontSize="16" />
+                <TextBox Name="RefLink" Text="http://dropbox.com............................" FontSize="16" IsReadOnly="True" />
+                <Label Name="Lang" Content="Russian" FontSize="16" />
+                <Label Name="Country" Content="By" FontSize="16" />
+                <Label Content="0/2 ГБ" Name="DriveSpaceValue"  FontSize="16"/>
+                <ProgressBar  Name="DriveSpaceIndicator"  Height="36" />
+                
+            </StackPanel>
+            <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right" Grid.RowSpan="2">
+                <Button Template="{DynamicResource CloseButton}" Content="X" FontSize="20" Padding="16,8,16,8"
+                        VerticalAlignment="Top" HorizontalAlignment="Right" Click="Button_Click" IsCancel="True"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+
+</Window>
